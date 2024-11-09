@@ -58,6 +58,8 @@ namespace WindowSync
             btnStart.Text = runing ? "停止" : "运行";
             btnGetHandle.Enabled = !runing;
             btnClear.Enabled = !runing;
+            btnAddIgrone.Enabled = !runing;
+            btnIgroneClear.Enabled = !runing;
 
         }
 
@@ -180,7 +182,7 @@ namespace WindowSync
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            if (lstWindows.Items.Count < 1 || !isRuning)
+            if (lstWindows.Items.Count < 2 && !isRuning)
             {
                 MessageBox.Show("需要至少两个窗口才能运行！");
                 return;
@@ -206,7 +208,7 @@ namespace WindowSync
 
         private void lstWindows_DoubleClick(object sender, EventArgs e)
         {
-            if (lstWindows.SelectedItems.Count > 0)
+            if (lstWindows.SelectedItems.Count > 0 && !isRuning)
             {
                 SetMasterWindow(lstWindows.SelectedItems[0]);
             }
